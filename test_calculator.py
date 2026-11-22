@@ -27,4 +27,14 @@ def test_program_runs_and_prints_result():
         text=True,
     )
     assert result.returncode == 0
-    assert "10.0 + 20.0 = 30.0" in result.stdout
+    assert "10 + 20 = 30" in result.stdout
+
+
+def test_program_shows_decimals_when_needed():
+    result = subprocess.run(
+        [sys.executable, "calculator.py", "1.5", "2"],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0
+    assert "1.5 + 2 = 3.5" in result.stdout

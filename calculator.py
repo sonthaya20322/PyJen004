@@ -7,12 +7,17 @@ def add(a, b):
     return a + b
 
 
+def fmt(x):
+    """Show whole numbers without .0 (30.0 -> 30)."""
+    return str(int(x)) if float(x).is_integer() else str(x)
+
+
 def main(argv):
     if len(argv) == 2:
         a, b = float(argv[0]), float(argv[1])
     else:
         a, b = 5, 3
-    print(f"{a} + {b} = {add(a, b)}")
+    print(f"{fmt(a)} + {fmt(b)} = {fmt(add(a, b))}")
 
 
 if __name__ == "__main__":
